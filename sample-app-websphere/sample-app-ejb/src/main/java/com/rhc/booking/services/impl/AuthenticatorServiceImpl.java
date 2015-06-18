@@ -39,7 +39,7 @@ public class AuthenticatorServiceImpl implements SessionBean
         try
         {
             ctx = new InitialContext();
-            em = (EntityManager) ctx.lookup("java:comp/env/em/HotelEntityManager");
+            em = (EntityManager) ctx.lookup("java:comp/em/HotelEntityManager");
         }
         catch (NamingException e)
         {

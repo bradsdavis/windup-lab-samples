@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
-import javax.ejb.Stateless;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -21,7 +20,8 @@ public class UserServiceImpl implements SessionBean
     
     public boolean isUsernameAvailable(String userName)
     {
-        Query query = em.createNativeQuery("user.findByUserName");
+        System.out.println("Username: "+userName);
+        Query query = getEntityManager().createNamedQuery("user.findByUserName");
         query.setParameter("userName", userName);
         
         List<User> results = query.getResultList();
@@ -32,30 +32,41 @@ public class UserServiceImpl implements SessionBean
 
     public User registerUser(String name, String userName, String password)
     {
+         System.out.println(name+", "+userName);
         if(isUsernameAvailable(userName)) {
             User user = new User(name, password, userName);
-            em.merge(user);
+            getEntityManager().merge(user);
             
             return user;
         }
         
         throw new IllegalStateException("Username is taken: "+userName);
     }
-
-
-    @Override
-    public void ejbActivate() throws EJBException, RemoteException
-    {
+    
+    public EntityManager getEntityManager() {
+        if(em != null) {
+            return em;
+        }
+        
         Context ctx;
         try
         {
             ctx = new InitialContext();
-            em = (EntityManager) ctx.lookup("java:comp/env/HotelEntityManager");
+            em = (EntityManager) ctx.lookup("java:comp/env/em/HotelEntityManager");
         }
         catch (NamingException e)
         {
             throw new EJBException(e);
         }
+        
+        return em;
+    }
+
+
+    @Override
+    public void ejbActivate() throws EJBException, RemoteException
+    {
+        
     }
 
     @Override

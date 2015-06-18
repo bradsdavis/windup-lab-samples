@@ -19,6 +19,12 @@
   		<version>1.0.0</version>
   		<type>ejb</type>
   	</dependency>
+  	<dependency>
+  		<groupId>org.jboss.windup</groupId>
+  		<artifactId>sample-app-web</artifactId>
+  		<version>1.0.0</version>
+  		<type>war</type>
+  	</dependency>
   </dependencies>
   
   <build>
@@ -30,6 +36,7 @@
         <configuration>
            <defaultLibBundleDir>lib</defaultLibBundleDir>
            <initializeInOrder>true</initializeInOrder>
+           <skinnyWars>true</skinnyWars>
         </configuration>
       </plugin>
     </plugins>

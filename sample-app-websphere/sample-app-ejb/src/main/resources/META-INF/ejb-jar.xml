@@ -11,6 +11,12 @@
 			<ejb-class>com.rhc.booking.services.impl.AuthenticatorServiceImpl</ejb-class>
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
+			
+			<resource-ref>
+		        <res-ref-name>em/HotelEntityManager</res-ref-name>
+		        <res-type>javax.persistence.EntityManager</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
 		</session>
 		<session id="BookingService">
 			<ejb-name>BookingService</ejb-name>
@@ -35,6 +41,14 @@
 			<ejb-class>com.rhc.booking.services.impl.UserServiceImpl</ejb-class>
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
+			
+			<resource-ref>
+		        <res-ref-name>em/HotelEntityManager</res-ref-name>
+		        <res-type>javax.persistence.EntityManager</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
 		</session>
+		
+		
 	</enterprise-beans>
 </ejb-jar>

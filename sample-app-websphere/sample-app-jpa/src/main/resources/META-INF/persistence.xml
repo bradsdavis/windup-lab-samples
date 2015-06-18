@@ -5,11 +5,11 @@
   http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
 
 	<persistence-unit name="HotelEntityManager">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/hotel-ds</jta-data-source>
 		
 		<properties>
 			<property name="jboss.entity.manager.jndi.name" value="java:/HotelEntityManager"/>
+			<property name="jboss.entity.manager.factory.jndi.name" value="java:/HotelEntityManagerFactory"/>
 			<!-- <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WebSphereExtendedJTATransactionLookup"/> -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
