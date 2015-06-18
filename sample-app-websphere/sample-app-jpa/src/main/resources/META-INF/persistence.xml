@@ -6,16 +6,11 @@
 
 	<persistence-unit name="HotelEntityManager">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>jdbc/HotelDB</jta-data-source>
-		<class>com.rhc.booking.entities.Booking</class>
-		<class>com.rhc.booking.entities.Hotel</class>
-		<class>com.rhc.booking.entities.User</class>
+		<jta-data-source>java:jboss/datasources/hotel-ds</jta-data-source>
 		
 		<properties>
-			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WebSphereExtendedJTATransactionLookup"/>
-			<property name="hibernate.transaction.flush_before_completion" value="true"/>
-			<property name="hibernate.transaction.auto_close_session" value="true"/>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+			<!-- <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WebSphereExtendedJTATransactionLookup"/> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="false"/>   

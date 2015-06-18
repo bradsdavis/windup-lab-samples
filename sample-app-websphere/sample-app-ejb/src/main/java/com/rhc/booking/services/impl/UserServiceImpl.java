@@ -15,10 +15,8 @@ import javax.persistence.Query;
 
 import com.rhc.booking.entities.User;
 
-@Stateless
 public class UserServiceImpl implements SessionBean
 {
-
     private EntityManager em;
     
     public boolean isUsernameAvailable(String userName)

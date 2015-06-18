@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.1//EN" "http://java.sun com/dtd/ejb-jar_2_1.dtd">
+<ejb-jar>
+	<display-name>Hotel Services</display-name>
+	<enterprise-beans>
+		<session id="AuthenticatorService">
+			<ejb-name>AuthenticatorService</ejb-name>
+			<local-home>com.rhc.booking.services.AuthenticatorServiceHome</local-home>
+			<local>com.rhc.booking.services.AuthenticatorService</local>
+			<ejb-class>com.rhc.booking.services.impl.AuthenticatorServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+	</enterprise-beans>
+</ejb-jar>
