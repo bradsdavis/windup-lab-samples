@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import com.rhc.booking.entities.User;
+import com.rhc.booking.services.ValidationException;
 
 public class UserServiceImpl implements SessionBean
 {
@@ -32,7 +33,6 @@ public class UserServiceImpl implements SessionBean
 
     public User registerUser(String name, String userName, String password)
     {
-         System.out.println(name+", "+userName);
         if(isUsernameAvailable(userName)) {
             User user = new User(name, password, userName);
             getEntityManager().merge(user);
@@ -40,7 +40,7 @@ public class UserServiceImpl implements SessionBean
             return user;
         }
         
-        throw new IllegalStateException("Username is taken: "+userName);
+        throw new ValidationException("Username is taken: "+userName);
     }
     
     public EntityManager getEntityManager() {

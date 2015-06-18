@@ -17,6 +17,7 @@ import javax.persistence.Query;
 import com.rhc.booking.entities.Booking;
 import com.rhc.booking.entities.Hotel;
 import com.rhc.booking.entities.User;
+import com.rhc.booking.services.ValidationException;
 
 public class BookingServiceImpl implements SessionBean
 {
@@ -38,7 +39,7 @@ public class BookingServiceImpl implements SessionBean
             return results.get(0);
         }
 
-        throw new IllegalStateException("More than one booking for: " + confirmationId);
+        throw new ValidationException("More than one booking for: " + confirmationId);
     }
 
     public Booking create(Hotel hotel, User user, Date checkIn, Date checkOut, int beds)
@@ -73,7 +74,6 @@ public class BookingServiceImpl implements SessionBean
         }
         catch (NamingException e)
         {
-            System.err.println("ERROR..."+e.getMessage());
             throw new EJBException(e);
         }
     }
