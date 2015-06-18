@@ -7,5 +7,5 @@ import javax.ejb.EJBHome;
 
 public interface UserServiceHome extends EJBHome
 {
-    public UserService create() throws CreateException, RemoteException;
+    public UserServiceRemote create() throws CreateException, RemoteException;
 }

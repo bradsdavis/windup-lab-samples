@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE ejb-jar
-  PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.1//EN" "http://java.sun com/dtd/ejb-jar_2_1.dtd">
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.1//EN" "http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/j2ee/ejb-jar_2_1.xsd">
 <ejb-jar>
 	<display-name>Hotel Services</display-name>
 	<enterprise-beans>
 		<session id="AuthenticatorService">
 			<ejb-name>AuthenticatorService</ejb-name>
-			<local-home>com.rhc.booking.services.AuthenticatorServiceHome</local-home>
-			<local>com.rhc.booking.services.AuthenticatorService</local>
+			<home>com.rhc.booking.services.AuthenticatorServiceHome</home>
+			<remote>com.rhc.booking.services.AuthenticatorServiceRemote</remote>
 			<ejb-class>com.rhc.booking.services.impl.AuthenticatorServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="BookingService">
+			<ejb-name>BookingService</ejb-name>
+			<home>com.rhc.booking.services.BookingServiceHome</home>
+			<remote>com.rhc.booking.services.BookingServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.BookingServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="HotelService">
+			<ejb-name>HotelService</ejb-name>
+			<home>com.rhc.booking.services.HotelServiceHome</home>
+			<remote>com.rhc.booking.services.HotelServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.HotelServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="UserService">
+			<ejb-name>UserService</ejb-name>
+			<home>com.rhc.booking.services.UserServiceHome</home>
+			<remote>com.rhc.booking.services.UserServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.UserServiceImpl</ejb-class>
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>

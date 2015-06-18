@@ -9,7 +9,6 @@
   <name>JPA 1.x Entities</name>
   
   <dependencies>
-  
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>

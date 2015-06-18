@@ -64,6 +64,7 @@ public class BookingServiceImpl implements SessionBean
     @Override
     public void ejbActivate() throws EJBException, RemoteException
     {
+        System.out.println("Activating...");
         Context ctx;
         try
         {
@@ -72,6 +73,7 @@ public class BookingServiceImpl implements SessionBean
         }
         catch (NamingException e)
         {
+            System.err.println("ERROR..."+e.getMessage());
             throw new EJBException(e);
         }
     }

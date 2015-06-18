@@ -7,5 +7,5 @@ import javax.ejb.EJBHome;
 
 public interface AuthenticatorServiceHome extends EJBHome 
 {
-    public AuthenticatorService create() throws CreateException, RemoteException;
+    public AuthenticatorServiceRemote create() throws CreateException, RemoteException;
 }

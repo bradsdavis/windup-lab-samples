@@ -9,6 +9,7 @@
 		<jta-data-source>java:jboss/datasources/hotel-ds</jta-data-source>
 		
 		<properties>
+			<property name="jboss.entity.manager.jndi.name" value="java:/HotelEntityManager"/>
 			<!-- <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WebSphereExtendedJTATransactionLookup"/> -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

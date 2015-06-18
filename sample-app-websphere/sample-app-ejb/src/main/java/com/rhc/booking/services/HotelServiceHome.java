@@ -7,5 +7,5 @@ import javax.ejb.EJBHome;
 
 public interface HotelServiceHome extends EJBHome
 {
-    public HotelService create() throws CreateException, RemoteException;
+    public HotelServiceRemote create() throws CreateException, RemoteException;
 }

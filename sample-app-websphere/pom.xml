@@ -9,5 +9,6 @@
   	<module>sample-app-jpa</module>
   	<module>sample-app-ejb</module>
   	<module>sample-app-web</module>
+  	<module>sample-app-ear</module>
   </modules>
 </project>
