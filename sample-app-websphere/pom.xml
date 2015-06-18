@@ -6,6 +6,8 @@
   <name>Sample Java EE Application for Websphere</name>
   <packaging>pom</packaging>
   <modules>
+  	<module>sample-app-jpa</module>
   	<module>sample-app-ejb</module>
+  	<module>sample-app-web</module>
   </modules>
 </project>

@@ -11,25 +11,20 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-			<version>1.0.2</version>
-		</dependency>
-		<dependency>
              <groupId>javaee</groupId>
              <artifactId>javaee-api</artifactId>
              <version>5</version>
              <scope>provided</scope>
          </dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>3.1.0.GA</version>
-		</dependency>
-		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.windup</groupId>
+			<artifactId>sample-app-jpa</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 
