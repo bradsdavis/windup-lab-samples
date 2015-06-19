@@ -20,7 +20,7 @@ public class AuthenticatorServiceImpl implements SessionBean
 
     public boolean authenticate(String user, String pass)
     {
-        Query query = em.createNamedQuery("user.authenticate");
+        Query query = getEntityManager().createNamedQuery("user.authenticate");
         query.setParameter("userName", user);
         query.setParameter("password", pass);
         
@@ -31,22 +31,32 @@ public class AuthenticatorServiceImpl implements SessionBean
         }
         return false;
     }
-
-    @Override
-    public void ejbActivate() throws EJBException, RemoteException
-    {
+    
+    public EntityManager getEntityManager() {
+        if(em != null) {
+            return em;
+        }
+        
         Context ctx;
         try
         {
             ctx = new InitialContext();
-            em = (EntityManager) ctx.lookup("java:comp/em/HotelEntityManager");
+            em = (EntityManager) ctx.lookup("java:comp/env/em/HotelEntityManager");
         }
         catch (NamingException e)
         {
             throw new EJBException(e);
         }
+        
+        return em;
     }
 
+    @Override
+    public void ejbActivate() throws EJBException, RemoteException
+    {
+        
+    }
+    
     @Override
     public void ejbPassivate() throws EJBException, RemoteException
     {
@@ -64,5 +74,6 @@ public class AuthenticatorServiceImpl implements SessionBean
     {
         
     }
+
 
 }

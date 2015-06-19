@@ -49,6 +49,47 @@
 		    </resource-ref>
 		</session>
 		
+		<session id="NotificationService">
+			<ejb-name>NotificationService</ejb-name>
+			<local-home>com.rhc.booking.services.NotificationServiceLocalHome</local-home>
+         	<local>com.rhc.booking.services.NotificationServiceLocal</local>
+			<home>com.rhc.booking.services.NotificationServiceHome</home>
+			<remote>com.rhc.booking.services.NotificationServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.NotificationServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			
+			<resource-ref>
+		        <res-ref-name>jms/NotificationConnectionFactory</res-ref-name>
+		        <res-type>javax.jms.ConnectionFactory</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
+		    
+		    <resource-ref>
+		        <res-ref-name>jms/NotificationQueue</res-ref-name>
+		        <res-type>javax.jms.Queue</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
+		</session>
 		
+		<message-driven>
+            <display-name>NotificationMDB</display-name>
+            <ejb-name>NotificationMDB</ejb-name>
+            <ejb-class>com.rhc.booking.listener.NotificationMDB</ejb-class>
+            <transaction-type>Container</transaction-type>
+        </message-driven>
 	</enterprise-beans>
+	
+    <assembly-descriptor>
+        <container-transaction>
+            <method>
+                <ejb-name>NotificationMDB</ejb-name>
+                <method-name>onMessage</method-name>
+                <method-params>
+                    <method-param>javax.jms.Message</method-param>
+                </method-params>
+            </method>
+            <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+    </assembly-descriptor> 
 </ejb-jar>

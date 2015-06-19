@@ -21,7 +21,7 @@ public class HotelServiceImpl implements SessionBean
 
     public List<Hotel> findByCity(String city, String state)
     {
-        Query query = em.createNamedQuery("hotel.byCityState");
+        Query query = getEntityManager().createNamedQuery("hotel.byCityState");
         query.setParameter("city", city);
         query.setParameter("state", state);
         
@@ -36,20 +36,30 @@ public class HotelServiceImpl implements SessionBean
         }
         return true;
     }
-
-    @Override
-    public void ejbActivate() throws EJBException, RemoteException
-    {
+    
+    public EntityManager getEntityManager() {
+        if(em != null) {
+            return em;
+        }
+        
         Context ctx;
         try
         {
             ctx = new InitialContext();
-            em = (EntityManager) ctx.lookup("java:comp/env/HotelEntityManager");
+            em = (EntityManager) ctx.lookup("java:comp/env/em/HotelEntityManager");
         }
         catch (NamingException e)
         {
             throw new EJBException(e);
         }
+        
+        return em;
+    }
+
+    @Override
+    public void ejbActivate() throws EJBException, RemoteException
+    {
+        
     }
 
     @Override
