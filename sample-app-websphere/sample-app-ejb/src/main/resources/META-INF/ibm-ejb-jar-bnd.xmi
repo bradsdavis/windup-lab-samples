@@ -3,7 +3,7 @@
   <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
 
   
-  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681" jndiName="session/service/WindupAnotherExampleServiceLocalHome">
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
       <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AuthenticatorService"/>
       
       <resRefBindings xmi:id="ResourceBindingRef_7447516360331" jndiName="java:/HotelEntityManager">
@@ -11,7 +11,7 @@
       </resRefBindings>
   </ejbBindings>
 
-  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681" jndiName="session/service/WindupAnotherExampleServiceLocalHome">
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
       <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#BookingService"/>
       
       <resRefBindings xmi:id="ResourceBindingRef_3647516360234" jndiName="java:/HotelEntityManager">
@@ -19,7 +19,7 @@
       </resRefBindings>
   </ejbBindings>
   
-  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681" jndiName="session/service/WindupAnotherExampleServiceLocalHome">
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
       <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#HotelService"/>
       
       <resRefBindings xmi:id="ResourceBindingRef_5436463603878" jndiName="java:/HotelEntityManager">
@@ -28,7 +28,7 @@
   </ejbBindings>
   
   
-  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681" jndiName="session/service/WindupAnotherExampleServiceLocalHome">
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
       <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#UserService"/>
       
       <resRefBindings xmi:id="ResourceBindingRef_8867563222854" jndiName="java:/HotelEntityManager">
@@ -37,7 +37,7 @@
   </ejbBindings>
   
   
-  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681" jndiName="session/service/WindupAnotherExampleServiceLocalHome">
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
       <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#NotificationService"/>
       
       <resRefBindings xmi:id="ResourceBindingRef_9483723223356" jndiName="java:/ConnectionFactory">

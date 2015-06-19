@@ -30,6 +30,14 @@
                 <jndi-name>java:/HotelEntityManager</jndi-name>
             </resource-ref>
         </session>
+        
+		<session>
+			<ejb-name>HotelService</ejb-name>
+			<resource-ref>
+                <res-ref-name>em/HotelEntityManager</res-ref-name>
+                <jndi-name>java:/HotelEntityManager</jndi-name>
+            </resource-ref>
+		</session>
         <session>
             <ejb-name>NotificationService</ejb-name>
             <resource-ref>
