@@ -17,3 +17,11 @@
         <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
     </validation>
 </xa-datasource>
+
+
+
+//create the queue in the standalone.xml
+
+<jms-queue name="NotificationQUeue">
+    <entry name="java:/jms/queue/NotificationQueue"/>
+</jms-queue>

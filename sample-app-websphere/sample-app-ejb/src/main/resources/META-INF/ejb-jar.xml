@@ -12,7 +12,7 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 			
-			<resource-ref>
+			<resource-ref id="ResourceRef_7447516360331">
 		        <res-ref-name>em/HotelEntityManager</res-ref-name>
 		        <res-type>javax.persistence.EntityManager</res-type>
 		        <res-auth>Application</res-auth>
@@ -25,6 +25,12 @@
 			<ejb-class>com.rhc.booking.services.impl.BookingServiceImpl</ejb-class>
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
+			
+			<resource-ref id="ResourceRef_3647516360234">
+		        <res-ref-name>em/HotelEntityManager</res-ref-name>
+		        <res-type>javax.persistence.EntityManager</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
 		</session>
 		<session id="HotelService">
 			<ejb-name>HotelService</ejb-name>
@@ -33,6 +39,12 @@
 			<ejb-class>com.rhc.booking.services.impl.HotelServiceImpl</ejb-class>
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
+			
+			<resource-ref id="ResourceRef_5436463603878">
+		        <res-ref-name>em/HotelEntityManager</res-ref-name>
+		        <res-type>javax.persistence.EntityManager</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
 		</session>
 		<session id="UserService">
 			<ejb-name>UserService</ejb-name>
@@ -42,7 +54,7 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 			
-			<resource-ref>
+			<resource-ref id="ResourceRef_8867563222854">
 		        <res-ref-name>em/HotelEntityManager</res-ref-name>
 		        <res-type>javax.persistence.EntityManager</res-type>
 		        <res-auth>Application</res-auth>
@@ -59,20 +71,20 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 			
-			<resource-ref>
+			<resource-ref id="ResourceRef_9483723223356">
 		        <res-ref-name>jms/NotificationConnectionFactory</res-ref-name>
 		        <res-type>javax.jms.ConnectionFactory</res-type>
 		        <res-auth>Application</res-auth>
 		    </resource-ref>
 		    
-		    <resource-ref>
+		    <resource-ref id="ResourceRef_2294363222094">
 		        <res-ref-name>jms/NotificationQueue</res-ref-name>
 		        <res-type>javax.jms.Queue</res-type>
 		        <res-auth>Application</res-auth>
 		    </resource-ref>
 		</session>
 		
-		<message-driven>
+		<message-driven id="NotificationMDB">
             <display-name>NotificationMDB</display-name>
             <ejb-name>NotificationMDB</ejb-name>
             <ejb-class>com.rhc.booking.listener.NotificationMDB</ejb-class>
