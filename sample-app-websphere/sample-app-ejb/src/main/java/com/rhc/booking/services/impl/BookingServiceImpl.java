@@ -74,7 +74,7 @@ public class BookingServiceImpl implements SessionBean
     private NotificationServiceLocal getNotificationService() throws NamingException {
         if(notificationService == null) {
             Context ctx = new InitialContext(); 
-            notificationService = (NotificationServiceLocal) ctx.lookup("");
+            notificationService = (NotificationServiceLocal) ctx.lookup("ejb/local/NotificationServiceLocal");
         }
         return notificationService;
     }

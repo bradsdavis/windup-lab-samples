@@ -10,7 +10,7 @@ import com.rhc.booking.services.NotificationServiceRemote;
 @WebService(endpointInterface = "com.rhc.booking.ws.NotificationService")
 public class NotificationServiceImpl implements NotificationService
 {
-    @Resource(mappedName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceRemote")
+    @Resource(mappedName="java:comp/env/ejb/local/NotificationServiceLocal")
     private NotificationServiceRemote notificationService;
          
     @Override

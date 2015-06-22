@@ -31,6 +31,13 @@
 		        <res-type>javax.persistence.EntityManager</res-type>
 		        <res-auth>Application</res-auth>
 		    </resource-ref>
+		    
+			<ejb-local-ref id="EJBLocalRef_229385039593">
+				<ejb-ref-name>ejb/local/NotificationServiceLocal</ejb-ref-name>
+				<ejb-ref-type>Session</ejb-ref-type>
+				<local-home>com.rhc.booking.services.NotificationServiceLocalHome</local-home>
+				<local>com.rhc.booking.services.NotificationServiceLocal</local>
+			</ejb-local-ref>
 		</session>
 		<session id="HotelService">
 			<ejb-name>HotelService</ejb-name>
@@ -46,6 +53,8 @@
 		        <res-auth>Application</res-auth>
 		    </resource-ref>
 		</session>
+
+
 		<session id="UserService">
 			<ejb-name>UserService</ejb-name>
 			<home>com.rhc.booking.services.UserServiceHome</home>
@@ -59,6 +68,13 @@
 		        <res-type>javax.persistence.EntityManager</res-type>
 		        <res-auth>Application</res-auth>
 		    </resource-ref>
+		    
+			<ejb-local-ref id="EJBLocalRef_5948375049832">
+				<ejb-ref-name>ejb/local/NotificationServiceLocal</ejb-ref-name>
+				<ejb-ref-type>Session</ejb-ref-type>
+				<local-home>com.rhc.booking.services.NotificationServiceLocalHome</local-home>
+				<local>com.rhc.booking.services.NotificationServiceLocal</local>
+			</ejb-local-ref>
 		</session>
 		
 		<session id="NotificationService">

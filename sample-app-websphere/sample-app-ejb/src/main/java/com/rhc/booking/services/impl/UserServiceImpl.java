@@ -12,16 +12,21 @@ import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.rhc.booking.entities.User;
+import com.rhc.booking.services.NotificationServiceLocal;
 import com.rhc.booking.services.ValidationException;
 
 public class UserServiceImpl implements SessionBean
 {
+    private static final Log LOG = LogFactory.getLog(UserServiceImpl.class);
+    private NotificationServiceLocal notificationService;
     private EntityManager em;
     
     public boolean isUsernameAvailable(String userName)
     {
-        System.out.println("Username: "+userName);
         Query query = getEntityManager().createNamedQuery("user.findByUserName");
         query.setParameter("userName", userName);
         
@@ -36,6 +41,13 @@ public class UserServiceImpl implements SessionBean
         if(isUsernameAvailable(userName)) {
             User user = new User(name, password, userName);
             getEntityManager().merge(user);
+            
+            try {
+                getNotificationService().sendNotification("Registered User: "+userName);
+            }
+            catch(NamingException e) {
+                throw new ValidationException("Exception sending notification for username: "+userName, e);
+            }
             
             return user;
         }
@@ -62,6 +74,16 @@ public class UserServiceImpl implements SessionBean
         return em;
     }
 
+
+    private NotificationServiceLocal getNotificationService() throws NamingException {
+        if(notificationService == null) {
+            Context ctx = new InitialContext(); 
+            notificationService = (NotificationServiceLocal) ctx.lookup("java:comp/env/ejb/local/NotificationServiceLocal");
+        }
+        return notificationService;
+    }
+    
+    
 
     @Override
     public void ejbActivate() throws EJBException, RemoteException

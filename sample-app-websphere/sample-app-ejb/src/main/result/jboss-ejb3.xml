@@ -41,6 +41,11 @@
 				<res-ref-name>em/HotelEntityManager</res-ref-name>
 				<jndi-name>java:/HotelEntityManager</jndi-name>
 			</resource-ref>
+
+			<ejb-local-ref>
+				<ejb-ref-name>ejb/local/NotificationServiceLocal</ejb-ref-name>
+				<mapped-name>java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal</mapped-name>
+			</ejb-local-ref>
 		</session>
 		<session>
 			<ejb-name>NotificationService</ejb-name>
