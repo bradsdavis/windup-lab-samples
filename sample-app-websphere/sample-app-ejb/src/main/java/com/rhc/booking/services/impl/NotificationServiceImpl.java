@@ -15,8 +15,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class NotificationServiceImpl implements SessionBean
 {
+    private static final Log LOG = LogFactory.getLog(NotificationServiceImpl.class);
     private QueueConnection queueConnection = null;
     private QueueSession queueSession = null;
     private QueueSender queueSender = null;
@@ -41,26 +45,50 @@ public class NotificationServiceImpl implements SessionBean
             
             queueConnection = qcf.createQueueConnection(); 
             queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-            queueSender = queueSession.createSender(notificationQueue);    
+            queueSender = queueSession.createSender(notificationQueue);
+            
+            ctx.close();
+        }
+    }
+    
+    private void stopQuietly() {
+        try {
+            if(queueConnection != null) {
+                queueConnection.close();
+                queueConnection = null;
+            }
+            
+            if(queueSender != null) {
+                queueSender.close();
+                queueSender = null;
+            }
+            
+            if(queueSession != null) {
+                queueSession.close();
+                queueSession = null;
+            }
+        }
+        catch(Exception e) {
+            LOG.error("Exception shutting down connections.", e);
         }
     }
     
     @Override
     public void ejbActivate()
     {
-        
+
     }
 
     @Override
     public void ejbPassivate()
     {
-
+        stopQuietly();
     }
 
     @Override
     public void ejbRemove()
     {
-
+        stopQuietly();
     }
 
     @Override

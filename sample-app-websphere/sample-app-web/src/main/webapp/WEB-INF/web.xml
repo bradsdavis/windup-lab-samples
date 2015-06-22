@@ -7,4 +7,36 @@
         <servlet-name>javax.ws.rs.core.Application</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+    
+  	<ejb-ref id="EjbRef_62214431168861">
+		<ejb-ref-name>ejb/remote/UserServiceRemote</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<home>com.rhc.booking.services.UserServiceHome</home>
+		<remote>com.rhc.booking.services.UserServiceRemote</remote>
+	</ejb-ref>
+	
+	<ejb-local-ref id="EjbLocalRef_9350622079652">
+		<ejb-ref-name>ejb/local/NotificationServiceLocal</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>com.rhc.booking.services.NotificationServiceLocalHome</local-home>
+		<local>com.rhc.booking.services.NotificationServiceLocal</local>
+	</ejb-local-ref>
+	
+	<resource-ref id="ResourceRef_22657332188796">
+        <res-ref-name>jms/NotificationConnectionFactory</res-ref-name>
+        <res-type>javax.jms.ConnectionFactory</res-type>
+        <res-auth>Application</res-auth>
+    </resource-ref>
+    
+    <message-destination-ref id="MessageDestinationRef_6648759982234">
+		<message-destination-ref-name>jms/NotificationQueue</message-destination-ref-name>
+		<message-destination-type>javax.jms.Queue</message-destination-type>
+		<message-destination-usage>Produces</message-destination-usage>
+		<message-destination-link>jms/NotificationQueue</message-destination-link>
+	</message-destination-ref>
+
+	<message-destination>
+		<description></description>
+		<message-destination-name>jms/NotificationQueue</message-destination-name>
+	</message-destination>    
 </web-app>

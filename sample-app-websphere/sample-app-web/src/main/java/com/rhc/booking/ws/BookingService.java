@@ -9,17 +9,17 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import com.rhc.booking.entities.User;
-import com.rhc.booking.services.NotificationServiceRemote;
+import com.rhc.booking.services.NotificationServiceLocal;
 import com.rhc.booking.services.UserServiceRemote;
 
 @Path("/BookingService")
 public class BookingService
 {
-    @Resource(mappedName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/UserService!com.rhc.booking.services.UserServiceRemote")
+    @Resource(mappedName="java:comp/env/ejb/remote/UserServiceRemote")
     private UserServiceRemote userService;
     
-    @Resource(mappedName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceRemote")
-    private NotificationServiceRemote notificationService;
+    @Resource(mappedName="java:comp/env/ejb/local/NotificationServiceLocal")
+    private NotificationServiceLocal notificationService;
     
     
     @POST
