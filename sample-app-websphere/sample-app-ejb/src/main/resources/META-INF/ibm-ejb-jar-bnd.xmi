@@ -39,7 +39,7 @@
         <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_8867563222854"/>
       </resRefBindings>
 
-	  <ejbRefBindings xmi:id="EJBRefBnd_229385039593" jndiName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal">
+	  <ejbRefBindings xmi:id="EJBRefBnd_5948375049832" jndiName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal">
       	<bindingEjbRef xmi:type="common:EJBLocalRef" href="META-INF/ejb-jar.xml#EJBLocalRef_5948375049832"/>
       </ejbRefBindings>
   </ejbBindings>
