@@ -22,7 +22,7 @@
 		<local>com.rhc.booking.services.NotificationServiceLocal</local>
 	</ejb-local-ref>
 	
-	<resource-ref id="ResourceRef_22657332188796">
+	<resource-ref id="ResourceRef_1154224311435">
         <res-ref-name>jms/NotificationConnectionFactory</res-ref-name>
         <res-type>javax.jms.ConnectionFactory</res-type>
         <res-auth>Application</res-auth>

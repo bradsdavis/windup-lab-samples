@@ -7,6 +7,7 @@
   </parent>
   <artifactId>sample-app-ear</artifactId>
   <packaging>ear</packaging>
+  <name>Sample App EAR</name>
   <dependencies>
   	<dependency>
   		<groupId>org.jboss.windup</groupId>

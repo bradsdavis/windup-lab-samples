@@ -6,7 +6,7 @@
     <version>1.0.0</version>
   </parent>
   <artifactId>sample-app-jpa</artifactId>
-  <name>JPA 1.x Entities</name>
+  <name>Sample App JPA Entities</name>
   
   <dependencies>
 		<dependency>
