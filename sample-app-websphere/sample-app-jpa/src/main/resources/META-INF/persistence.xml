@@ -5,13 +5,13 @@
   http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
 
 	<persistence-unit name="HotelEntityManager">
-		<jta-data-source>java:jboss/datasources/hotel-ds</jta-data-source>
+		<jta-data-source>java:jboss/datasources/HotelDS</jta-data-source>
 		
 		<properties>
 			<property name="jboss.entity.manager.jndi.name" value="java:/HotelEntityManager"/>
 			<property name="jboss.entity.manager.factory.jndi.name" value="java:/HotelEntityManagerFactory"/>
 			<!-- <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WebSphereExtendedJTATransactionLookup"/> -->
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="false"/>   

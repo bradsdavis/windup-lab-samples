@@ -25,6 +25,8 @@ public class HotelServiceImpl implements SessionBean
         query.setParameter("city", city);
         query.setParameter("state", state);
         
+        String upAddress = "23.0.1.5";
+        
         List<Hotel> results = query.getResultList();
         return results;
     }
