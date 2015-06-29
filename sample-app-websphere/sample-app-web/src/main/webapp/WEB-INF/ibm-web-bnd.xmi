@@ -7,7 +7,7 @@
   </ejbRefBindings>
   
   <ejbRefBindings xmi:id="EjbRefBinding_9350622079652" jndiName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal">
-    <bindingEjbRef xmi:type="common:EJBLocalRef" href="WEB-INF/web.xml#EJBLocalRef_9350622079652"/>
+    <bindingEjbRef xmi:type="common:EJBLocalRef" href="WEB-INF/web.xml#EjbLocalRef_9350622079652"/>
   </ejbRefBindings>
   
   <resRefBindings xmi:id="ResourceRefBinding_1154224311435" jndiName="java:/ConnectionFactory">

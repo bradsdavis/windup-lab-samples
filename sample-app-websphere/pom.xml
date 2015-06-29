@@ -10,5 +10,6 @@
   	<module>sample-app-ejb</module>
   	<module>sample-app-web</module>
   	<module>sample-app-ear</module>
+  	<module>sample-app-rmi</module>
   </modules>
 </project>

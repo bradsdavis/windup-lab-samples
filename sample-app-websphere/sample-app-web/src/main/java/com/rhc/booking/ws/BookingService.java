@@ -1,9 +1,11 @@
 package com.rhc.booking.ws;
 
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 import javax.annotation.Resource;
-import javax.ws.rs.POST;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -12,6 +14,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.rhc.booking.entities.User;
+import com.rhc.booking.exception.BookingException;
+import com.rhc.booking.services.EventServer;
 import com.rhc.booking.services.NotificationServiceLocal;
 import com.rhc.booking.services.UserServiceRemote;
 
@@ -26,8 +30,9 @@ public class BookingService
     @Resource(mappedName="java:comp/env/ejb/local/NotificationServiceLocal")
     private NotificationServiceLocal notificationService;
     
+    private EventServer eventServer;
     
-    @POST
+    @GET
     @Path("/registerUser")
     @Produces({ "application/json" })
     public String registerUser(@QueryParam("name") String name, @QueryParam("userName") String userName, @QueryParam("password") String password) {
@@ -40,6 +45,9 @@ public class BookingService
             LOG.info(" - Password: "+password);
             
             User user = userService.registerUser(name, userName, password);
+            
+            eventServer.processEvent("Registration Event: "+userName);
+            
             return "{\"result\":\"" + user.getUsername() + "\"}";
         }
         catch (RemoteException e)
@@ -49,7 +57,7 @@ public class BookingService
     }
 
     
-    @POST
+    @GET
     @Path("/sendNotification")
     @Produces({ "application/json" })
     public String sendNotification(@QueryParam("message") String message) {
@@ -67,4 +75,17 @@ public class BookingService
             return "{\"error\":\"" + e.getCause().getMessage() + "\"}";
         }
     }
+    
+    private EventServer getEventServer() {
+	    if(eventServer == null) {
+	    	Registry registry;
+			try {
+				registry = LocateRegistry.getRegistry("localhost");
+				eventServer = (EventServer) registry.lookup("eventServer");
+			} catch (Exception e) {
+				throw new BookingException("Exception setting up event server.", e);
+			}
+	    }
+	    return eventServer;
+	}
 }

@@ -28,5 +28,11 @@
 			<version>1.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jboss.windup</groupId>
+			<artifactId>sample-app-rmi</artifactId>
+			<version>1.0.0</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>
