@@ -21,16 +21,17 @@ import com.rhc.booking.services.impl.EventServerImpl;
 @WebListener
 public class RegisterEventRMI implements ServletContextListener {
 	private static final Log LOG = LogFactory.getLog(RegisterEventRMI.class);
+	private static final String BIND_LOCATION = "eventServer";
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
 		Registry registry;
 		try {
 			registry = LocateRegistry.createRegistry(1099);
-	        registry.rebind("eventServer", new EventServerImpl());
-			LOG.info("ServletContextListener destroyed");
-		} catch (RemoteException e) {
-			LOG.error("Exception destroying service.", e);
+	        registry.unbind(BIND_LOCATION);
+			LOG.info("ServletContextListener destroyed: "+BIND_LOCATION);
+		} catch (Exception e) {
+			LOG.error("Exception destroying service: "+BIND_LOCATION, e);
 		}
 	}
 
@@ -40,9 +41,9 @@ public class RegisterEventRMI implements ServletContextListener {
 		try {
 			registry = LocateRegistry.createRegistry(1099);
 	        registry.rebind("eventServer", new EventServerImpl());
-			LOG.info("ServletContextListener destroyed");
+			LOG.info("ServletContextListener created. Service bound to: "+BIND_LOCATION);
 		} catch (RemoteException e) {
-			LOG.error("Exception creating service.", e);
+			LOG.error("Exception creating service: "+BIND_LOCATION, e);
 		}
 	}
 }
