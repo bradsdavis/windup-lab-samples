@@ -76,6 +76,26 @@ public class BookingService
         }
     }
     
+    
+    @GET
+    @Path("/sendEvent")
+    @Produces({ "application/json" })
+    public String sendEvent(@QueryParam("message") String message) {
+        try
+        {
+            LOG.info("Received Parameters");
+            LOG.info("==============================");
+            LOG.info(" - Message: "+message);
+            
+            String event = getEventServer().processEvent(message);
+            return "{\"result\":\"" + event + "\"}";
+        }
+        catch (Exception e)
+        {
+            return "{\"error\":\"" + e.getCause().getMessage() + "\"}";
+        }
+    }
+    
     private EventServer getEventServer() {
 	    if(eventServer == null) {
 	    	Registry registry;
