@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.1//EN" "http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/j2ee/ejb-jar_2_1.xsd">
+<ejb-jar>
+	<display-name>Hotel Services</display-name>
+	<enterprise-beans>
+		<session id="AuthenticatorService">
+			<ejb-name>AuthenticatorService</ejb-name>
+			<home>com.rhc.booking.services.AuthenticatorServiceHome</home>
+			<remote>com.rhc.booking.services.AuthenticatorServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.AuthenticatorServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			
+			<resource-ref id="ResourceRef_7447516360331">
+		        <res-ref-name>em/HotelEntityManager</res-ref-name>
+		        <res-type>javax.persistence.EntityManager</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
+		</session>
+		<session id="BookingService">
+			<ejb-name>BookingService</ejb-name>
+			<home>com.rhc.booking.services.BookingServiceHome</home>
+			<remote>com.rhc.booking.services.BookingServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.BookingServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			
+			<resource-ref id="ResourceRef_3647516360234">
+		        <res-ref-name>em/HotelEntityManager</res-ref-name>
+		        <res-type>javax.persistence.EntityManager</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
+		    
+			<ejb-local-ref id="EJBLocalRef_229385039593">
+				<ejb-ref-name>ejb/local/NotificationServiceLocal</ejb-ref-name>
+				<ejb-ref-type>Session</ejb-ref-type>
+				<local-home>com.rhc.booking.services.NotificationServiceLocalHome</local-home>
+				<local>com.rhc.booking.services.NotificationServiceLocal</local>
+			</ejb-local-ref>
+		</session>
+		<session id="HotelService">
+			<ejb-name>HotelService</ejb-name>
+			<home>com.rhc.booking.services.HotelServiceHome</home>
+			<remote>com.rhc.booking.services.HotelServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.HotelServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			
+			<resource-ref id="ResourceRef_5436463603878">
+		        <res-ref-name>em/HotelEntityManager</res-ref-name>
+		        <res-type>javax.persistence.EntityManager</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
+		</session>
+
+
+		<session id="UserService">
+			<ejb-name>UserService</ejb-name>
+			<home>com.rhc.booking.services.UserServiceHome</home>
+			<remote>com.rhc.booking.services.UserServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.UserServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			
+			<resource-ref id="ResourceRef_8867563222854">
+		        <res-ref-name>em/HotelEntityManager</res-ref-name>
+		        <res-type>javax.persistence.EntityManager</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
+		    
+			<ejb-local-ref id="EJBLocalRef_5948375049832">
+				<ejb-ref-name>ejb/local/NotificationServiceLocal</ejb-ref-name>
+				<ejb-ref-type>Session</ejb-ref-type>
+				<local-home>com.rhc.booking.services.NotificationServiceLocalHome</local-home>
+				<local>com.rhc.booking.services.NotificationServiceLocal</local>
+			</ejb-local-ref>
+		</session>
+		
+		<session id="NotificationService">
+			<ejb-name>NotificationService</ejb-name>
+			<local-home>com.rhc.booking.services.NotificationServiceLocalHome</local-home>
+         	<local>com.rhc.booking.services.NotificationServiceLocal</local>
+			<home>com.rhc.booking.services.NotificationServiceHome</home>
+			<remote>com.rhc.booking.services.NotificationServiceRemote</remote>
+			<ejb-class>com.rhc.booking.services.impl.NotificationServiceImpl</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			
+			<resource-ref id="ResourceRef_9483723223356">
+		        <res-ref-name>jms/NotificationConnectionFactory</res-ref-name>
+		        <res-type>javax.jms.ConnectionFactory</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
+		    
+		    <resource-ref id="ResourceRef_2294363222094">
+		        <res-ref-name>jms/NotificationQueue</res-ref-name>
+		        <res-type>javax.jms.Queue</res-type>
+		        <res-auth>Application</res-auth>
+		    </resource-ref>
+		</session>
+		
+		<message-driven id="NotificationMDB">
+            <display-name>NotificationMDB</display-name>
+            <ejb-name>NotificationMDB</ejb-name>
+            <ejb-class>com.rhc.booking.listener.NotificationMDB</ejb-class>
+            <transaction-type>Container</transaction-type>
+        </message-driven>
+	</enterprise-beans>
+	
+    <assembly-descriptor>
+        <container-transaction>
+            <method>
+                <ejb-name>NotificationMDB</ejb-name>
+                <method-name>onMessage</method-name>
+                <method-params>
+                    <method-param>javax.jms.Message</method-param>
+                </method-params>
+            </method>
+            <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+    </assembly-descriptor> 
+</ejb-jar>

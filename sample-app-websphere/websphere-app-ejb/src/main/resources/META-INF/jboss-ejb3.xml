@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss:ejb-jar xmlns:jboss="http://www.jboss.com/xml/ns/javaee"
+               xmlns="http://java.sun.com/xml/ns/javaee"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:s="urn:security:1.1"
+               xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/j2ee/schema/jboss-ejb3-2_0.xsd http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd"
+               version="3.1"
+               impl-version="2.1">
+               
+    <enterprise-beans>
+		
+		<session> 
+            <ejb-name>AuthenticatorService</ejb-name>
+            <session-type>Stateless</session-type>
+            
+	  	 <resource-ref>
+            <res-ref-name>em/HotelEntityManager</res-ref-name>
+            <jndi-name>java:/HotelEntityManager</jndi-name>
+         </resource-ref>
+        </session>
+		<session> 
+            <ejb-name>BookingService</ejb-name>
+            <session-type>Stateless</session-type>
+            
+	  	 <resource-ref>
+            <res-ref-name>em/HotelEntityManager</res-ref-name>
+            <jndi-name>java:/HotelEntityManager</jndi-name>
+         </resource-ref>
+	  	 <ejb-local-ref>
+			<ejb-ref-name>ejb/local/NotificationServiceLocal</ejb-ref-name>
+			<jndi-name>java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal</jndi-name>
+		 </ejb-local-ref>
+        </session>
+		<session> 
+            <ejb-name>HotelService</ejb-name>
+            <session-type>Stateless</session-type>
+            
+	  	 <resource-ref>
+            <res-ref-name>em/HotelEntityManager</res-ref-name>
+            <jndi-name>java:/HotelEntityManager</jndi-name>
+         </resource-ref>
+        </session>
+		<session> 
+            <ejb-name>UserService</ejb-name>
+            <session-type>Stateless</session-type>
+            
+	  	 <resource-ref>
+            <res-ref-name>em/HotelEntityManager</res-ref-name>
+            <jndi-name>java:/HotelEntityManager</jndi-name>
+         </resource-ref>
+	  	 <ejb-local-ref>
+			<ejb-ref-name>ejb/local/NotificationServiceLocal</ejb-ref-name>
+			<jndi-name>java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal</jndi-name>
+		 </ejb-local-ref>
+        </session>
+		<session> 
+            <ejb-name>NotificationService</ejb-name>
+            <session-type>Stateless</session-type>
+            
+	  	 <resource-ref>
+            <res-ref-name>jms/NotificationConnectionFactory</res-ref-name>
+            <jndi-name>java:/ConnectionFactory</jndi-name>
+         </resource-ref>
+	  	 <resource-ref>
+            <res-ref-name>jms/NotificationQueue</res-ref-name>
+            <jndi-name>java:/jms/queue/NotificationQueue</jndi-name>
+         </resource-ref>
+        </session>
+        
+    	<message-driven>
+			<ejb-name>NotificationMDB</ejb-name>
+			<activation-config>
+               <activation-config-property>
+                  <activation-config-property-name>destination</activation-config-property-name>
+                  <activation-config-property-value>java:/jms/queue/NotificationQueue</activation-config-property-value>
+               </activation-config-property>
+            </activation-config>
+            
+    	</message-driven>
+    </enterprise-beans>
+</jboss:ejb-jar>

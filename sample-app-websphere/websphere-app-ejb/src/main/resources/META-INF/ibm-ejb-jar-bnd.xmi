@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:common="common.xmi" xmlns:ejb="ejb.xmi" xmlns:ejbbnd="ejbbnd.xmi" xmi:id="EJBJarBinding_1111111111111" currentBackendId="BACKEND_ID">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+
+  
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
+      <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#AuthenticatorService"/>
+      
+      <resRefBindings xmi:id="ResourceBindingRef_7447516360331" jndiName="java:/HotelEntityManager">
+        <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_7447516360331"/>
+      </resRefBindings>
+  </ejbBindings>
+
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
+      <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#BookingService"/>
+      
+      <resRefBindings xmi:id="ResourceBindingRef_3647516360234" jndiName="java:/HotelEntityManager">
+        <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_3647516360234"/>
+      </resRefBindings>
+      
+	  <ejbRefBindings xmi:id="EJBRefBnd_229385039593" jndiName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal">
+      	<bindingEjbRef xmi:type="common:EJBLocalRef" href="META-INF/ejb-jar.xml#EJBLocalRef_229385039593"/>
+      </ejbRefBindings>
+  </ejbBindings>
+  
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
+      <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#HotelService"/>
+      
+      <resRefBindings xmi:id="ResourceBindingRef_5436463603878" jndiName="java:/HotelEntityManager">
+        <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_5436463603878"/>
+      </resRefBindings>
+  </ejbBindings>
+  
+  
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
+      <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#UserService"/>
+      
+      <resRefBindings xmi:id="ResourceBindingRef_8867563222854" jndiName="java:/HotelEntityManager">
+        <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_8867563222854"/>
+      </resRefBindings>
+
+	  <ejbRefBindings xmi:id="EJBRefBnd_5948375049832" jndiName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal">
+      	<bindingEjbRef xmi:type="common:EJBLocalRef" href="META-INF/ejb-jar.xml#EJBLocalRef_5948375049832"/>
+      </ejbRefBindings>
+  </ejbBindings>
+  
+  
+  <ejbBindings xmi:id="EnterpriseBeanBinding_8932831624681">
+      <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#NotificationService"/>
+      
+      <resRefBindings xmi:id="ResourceBindingRef_9483723223356" jndiName="java:/ConnectionFactory">
+        <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_9483723223356"/>
+      </resRefBindings>
+      
+      <resRefBindings xmi:id="ResourceBindingRef_2294363222094" jndiName="java:/jms/queue/NotificationQueue">
+        <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_2294363222094"/>
+      </resRefBindings>
+  </ejbBindings>
+  
+
+  <ejbBindings xmi:type="ejbbnd:MessageDrivenBeanBinding" xmi:id="MessageDrivenBeanBinding_4423312098111" destinationJndiName="java:/jms/queue/NotificationQueue">
+    <enterpriseBean xmi:type="ejb:MessageDriven" href="META-INF/ejb-jar.xml#NotificationMDB"/>
+    
+    <messageDestinationRefBindings xmi:id="MessageDestinationRefBinding_6949083997731" jndiName="java:/jms/queue/NotificationQueue">
+      <bindingMessageDestinationRef href="META-INF/ejb-jar.xml#MessageDestinationRef_6949083997731"/>
+    </messageDestinationRefBindings>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

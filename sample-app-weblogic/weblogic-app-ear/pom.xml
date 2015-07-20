@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jboss.windup</groupId>
+    <artifactId>weblogic-app</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>weblogic-app-ear</artifactId>
+  <packaging>ear</packaging>
+  <name>Sample Weblogic App EAR</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.jboss.windup</groupId>
+  		<artifactId>weblogic-app-jpa</artifactId>
+  		<version>1.0.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.jboss.windup</groupId>
+  		<artifactId>weblogic-app-ejb</artifactId>
+  		<version>1.0.0</version>
+  		<type>ejb</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.jboss.windup</groupId>
+  		<artifactId>weblogic-app-web</artifactId>
+  		<version>1.0.0</version>
+  		<type>war</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.jboss.windup</groupId>
+  		<artifactId>weblogic-app-rmi</artifactId>
+  		<version>1.0.0</version>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+  <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ear-plugin</artifactId>
+        <version>2.10</version>
+        <configuration>
+           <defaultLibBundleDir>lib</defaultLibBundleDir>
+           <initializeInOrder>true</initializeInOrder>
+           <skinnyWars>true</skinnyWars>
+        </configuration>
+      </plugin>
+    </plugins>
+  
+  </build>
+</project>

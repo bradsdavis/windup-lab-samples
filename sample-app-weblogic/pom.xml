@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jboss.windup</groupId>
-  <artifactId>websphere-app</artifactId>
+  <artifactId>weblogic-app</artifactId>
   <version>1.0.0</version>
-  <name>Sample Websphere Java EE Application</name>
+  <name>Sample Weblogic Java EE Application for Websphere</name>
   <packaging>pom</packaging>
   <modules>
-  	<module>websphere-app-rmi</module>
-  	<module>websphere-app-jpa</module>
-  	<module>websphere-app-ejb</module>
-  	<module>websphere-app-web</module>
-  	<module>websphere-app-ear</module>
+  	<module>weblogic-app-jpa</module>
+  	<module>weblogic-app-rmi</module>
+  	<module>weblogic-app-ejb</module>
+  	<module>weblogic-app-web</module>
+  	<module>weblogic-app-ear</module>
   </modules>
 </project>

@@ -1,0 +1,27 @@
+//create the datasource in the standalone.xml
+
+<xa-datasource jndi-name="java:jboss/datasources/hotel-ds" pool-name="hotelds" enabled="true">
+    <xa-datasource-property name="ServerName">
+        127.0.0.1
+    </xa-datasource-property>
+    <xa-datasource-property name="DatabaseName">
+        hotel
+    </xa-datasource-property>
+    <driver>mysql</driver>
+    <security>
+        <user-name>hotel</user-name>
+        <password>hotelPass1</password>
+    </security>
+    <validation>
+        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
+        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
+    </validation>
+</xa-datasource>
+
+
+
+//create the queue in the standalone.xml
+
+<jms-queue name="NotificationQUeue">
+    <entry name="java:/jms/queue/NotificationQueue"/>
+</jms-queue>
