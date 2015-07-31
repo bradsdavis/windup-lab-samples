@@ -25,9 +25,9 @@ public class NotificationMDB implements MessageListener, MessageDrivenBean
             try
             {
                 String message = txt.getText();
-                log.debug("Notification Received");
-                log.debug("===========================");
-                log.debug(" - Message: "+message);
+                log.info("Notification Received");
+                log.info("===========================");
+                log.info(" - Message: "+message);
             }
             catch (JMSException e)
             {

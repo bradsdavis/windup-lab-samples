@@ -38,11 +38,11 @@ public class BookingService
     public String registerUser(@QueryParam("name") String name, @QueryParam("userName") String userName, @QueryParam("password") String password) {
         try
         {
-            log.debug("Received Parameters");
-            log.debug("==============================");
-            log.debug(" - Name: "+name);
-            log.debug(" - UserName: "+userName);
-            log.debug(" - Password: "+password);
+            log.info("Received Parameters");
+            log.info("==============================");
+            log.info(" - Name: "+name);
+            log.info(" - UserName: "+userName);
+            log.info(" - Password: "+password);
             
             User user = userService.registerUser(name, userName, password);
             
@@ -63,11 +63,13 @@ public class BookingService
     public String sendNotification(@QueryParam("message") String message) {
         try
         {
-            log.debug("Received Parameters");
-            log.debug("==============================");
-            log.debug(" - Message: "+message);
+            log.info("Received Parameters");
+            log.info("==============================");
+            log.info(" - Message: "+message);
             
             notificationService.sendNotification(message);
+            
+            log.info(" - Sent to JMS Queue: java:comp/env/jms/NotificationQueue");
             return "{\"result\":\"" + "sent" + "\"}";
         }
         catch (Exception e)
@@ -83,9 +85,9 @@ public class BookingService
     public String sendEvent(@QueryParam("message") String message) {
         try
         {
-            log.debug("Received Parameters");
-            log.debug("==============================");
-            log.debug(" - Message: "+message);
+            log.info("Received Parameters");
+            log.info("==============================");
+            log.info(" - Message: "+message);
             
             String event = getEventServer().processEvent(message);
             return "{\"result\":\"" + event + "\"}";

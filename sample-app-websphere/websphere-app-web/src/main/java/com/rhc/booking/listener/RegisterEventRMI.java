@@ -29,7 +29,7 @@ public class RegisterEventRMI implements ServletContextListener {
 		try {
 			registry = LocateRegistry.getRegistry();
 	        registry.unbind(BIND_LOCATION);
-			log.debug("ServletContextListener destroyed: "+BIND_LOCATION);
+			log.info("ServletContextListener destroyed: "+BIND_LOCATION);
 		} catch (Exception e) {
 			log.error("Exception destroying service: "+BIND_LOCATION, e);
 		}
@@ -37,13 +37,25 @@ public class RegisterEventRMI implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		Registry registry;
+		Registry registry = null;
 		try {
-			registry = LocateRegistry.createRegistry(1099);
-	        registry.rebind("eventServer", new EventServerImpl());
-			log.debug("ServletContextListener created. Service bound to: "+BIND_LOCATION);
+			registry = LocateRegistry.getRegistry(1099);
+			log.info("ServletContextListener created. Service bound to: "+BIND_LOCATION);
 		} catch (RemoteException e) {
-			log.error("Exception creating service: "+BIND_LOCATION, e);
+			
+			try {
+				registry = LocateRegistry.createRegistry(1099);
+			}
+			catch(RemoteException f) {
+				log.error("Exception creating service: "+BIND_LOCATION, e);
+				throw new RuntimeException("Exception creating registry.", f);
+			}
+		}
+		try {
+			registry.rebind("eventServer", new EventServerImpl());
+		}
+		catch(RemoteException e) {
+			log.error("Exception binding service: "+BIND_LOCATION+" eventServer", e);
 		}
 	}
 }
