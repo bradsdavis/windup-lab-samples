@@ -2,11 +2,11 @@
 <webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:common="common.xmi" xmlns:webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_4059486561134" virtualHostName="default_host">
   <webapp href="WEB-INF/web.xml#WebApp_ID"/>
   
-  <ejbRefBindings xmi:id="EjbRefBinding_62214431168861" jndiName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/UserService!com.rhc.booking.services.UserServiceRemote">
+  <ejbRefBindings xmi:id="EjbRefBinding_62214431168861" jndiName="java:global/websphere-app-ear-1.0.0/websphere-app-ejb-1.0.0/UserService!com.rhc.booking.services.UserServiceRemote">
     <bindingEjbRef href="WEB-INF/web.xml#EjbRef_62214431168861"/>
   </ejbRefBindings>
   
-  <ejbRefBindings xmi:id="EjbRefBinding_9350622079652" jndiName="java:global/sample-app-ear-1.0.0/sample-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal">
+  <ejbRefBindings xmi:id="EjbRefBinding_9350622079652" jndiName="java:global/websphere-app-ear-1.0.0/websphere-app-ejb-1.0.0/NotificationService!com.rhc.booking.services.NotificationServiceLocal">
     <bindingEjbRef xmi:type="common:EJBLocalRef" href="WEB-INF/web.xml#EjbLocalRef_9350622079652"/>
   </ejbRefBindings>
   

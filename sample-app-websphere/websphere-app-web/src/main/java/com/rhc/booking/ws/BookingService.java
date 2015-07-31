@@ -19,7 +19,7 @@ import com.rhc.booking.services.EventServer;
 import com.rhc.booking.services.NotificationServiceLocal;
 import com.rhc.booking.services.UserServiceRemote;
 
-@Path("/ThreadedLoaderService")
+@Path("/BookingService")
 public class BookingService
 {
     private static final Log log = LogFactory.getLog(BookingService.class);

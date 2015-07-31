@@ -27,7 +27,7 @@ public class RegisterEventRMI implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent event) {
 		Registry registry;
 		try {
-			registry = LocateRegistry.createRegistry(1099);
+			registry = LocateRegistry.getRegistry();
 	        registry.unbind(BIND_LOCATION);
 			log.debug("ServletContextListener destroyed: "+BIND_LOCATION);
 		} catch (Exception e) {
