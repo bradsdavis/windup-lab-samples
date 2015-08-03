@@ -46,7 +46,7 @@ public class BookingService
             
             User user = userService.registerUser(name, userName, password);
             
-            eventServer.processEvent("Registration Event: "+userName);
+            getEventServer().processEvent("Registration Event: "+userName);
             
             return "{\"result\":\"" + user.getUsername() + "\"}";
         }
