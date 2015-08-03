@@ -1,5 +1,6 @@
 package com.rhc.booking.listener;
 
+import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -27,7 +28,7 @@ public class RegisterEventRMI implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent event) {
 		Registry registry;
 		try {
-			registry = LocateRegistry.getRegistry();
+			registry = LocateRegistry.getRegistry("127.0.0.1", 1099);
 	        registry.unbind(BIND_LOCATION);
 			log.info("ServletContextListener destroyed: "+BIND_LOCATION);
 		} catch (Exception e) {
@@ -39,23 +40,20 @@ public class RegisterEventRMI implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent event) {
 		Registry registry = null;
 		try {
-			registry = LocateRegistry.getRegistry(1099);
-			log.info("ServletContextListener created. Service bound to: "+BIND_LOCATION);
-		} catch (RemoteException e) {
+			registry = LocateRegistry.getRegistry("127.0.0.1", 1099);
+			registry.bind("eventServer", new EventServerImpl());
+			log.info("ServletContextListener retrieved. Service bound to: "+BIND_LOCATION);
+		} catch (Exception e) {
 			
 			try {
 				registry = LocateRegistry.createRegistry(1099);
+				registry.bind("eventServer", new EventServerImpl());
+				log.info("ServletContextListener created. Service bound to: "+BIND_LOCATION);
 			}
-			catch(RemoteException f) {
+			catch(Exception f) {
 				log.error("Exception creating service: "+BIND_LOCATION, e);
 				throw new RuntimeException("Exception creating registry.", f);
 			}
-		}
-		try {
-			registry.rebind("eventServer", new EventServerImpl());
-		}
-		catch(RemoteException e) {
-			log.error("Exception binding service: "+BIND_LOCATION+" eventServer", e);
 		}
 	}
 }
